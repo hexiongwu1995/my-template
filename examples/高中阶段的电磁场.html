@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高中阶段的电磁场</title>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@hexiongwu1995/my-template@latest/dist/iconfont/iconfont.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hexiongwu1995/my-template@latest/dist/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hexiongwu1995/my-template@latest/dist/css/math.css">
+    <script src="https://cdn.jsdelivr.net/npm/@hexiongwu1995/my-template@latest/dist/script/mathjax.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4/startup.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <aside>
+            <nav></nav>
+        </aside>
+        <div class="overlay"></div>
+        <main>
+            <header>
+                <span class="iconfont icon-bars"></span>
+                <span class="iconfont pagetitle">
+                    <script>document.write(document.querySelector('title').textContent)</script>
+                </span>
+                <span class="collection">
+                    <span class="iconfont icon-Homehomepagemenu"></span>
+                    <span class="iconfont icon-paintbrush"></span>
+                    <span class="iconfont icon-printer-fill"></span>
+                    <span class="iconfont icon-github"></span>
+                </span>
+
+            </header>
+            <article>
+            </article>
+        </main>
+    </div>
+
+    <div class="hidden-content">
+
+        <section>
+            <h1>高中阶段的电磁场内容介绍</h1>
+            <p>高中物理电磁学部分是电磁场理论的基础入门，内容涵盖静电场、恒定电流、磁场以及电磁感应等核心概念。这些内容按照从静到动、从特殊到一般的逻辑顺序展开，为学生建立起完整的电磁学知识框架。下面按照高中物理教材的讲课顺序，系统介绍各章节的主要内容。
+            </p>
+
+            <h2>静电场及其应用</h2>
+
+            <h3>电荷</h3>
+            <p>电荷是电磁学中最基本的物理量。自然界存在两种电荷：正电荷和负电荷。电荷的基本性质包括：同种电荷相互排斥，异种电荷相互吸引。电荷守恒定律指出，在一个孤立系统中，无论发生怎样的物理过程，电荷的代数和始终保持不变。
+            </p>
+            <p>物体带电的实质是电子的转移。当两个不同材料的物体相互摩擦时，由于它们对电子的束缚能力不同，电子会从束缚能力弱的物体转移到束缚能力强的物体上，从而使两个物体带上等量异种电荷。</p>
+            <p>元电荷是自然界中最小的电荷量，用 <span class="math">`e`</span> 表示，其数值为：</p>
+            <div class="math">`e = 1.60 xx 10^(-19) C`</div>
+            <p>任何带电体的电荷量都是元电荷的整数倍，即 <span class="math">`Q = n e`</span>，其中 <span class="math">`n`</span> 为正整数或负整数。</p>
+
+            <h3>库仑定律</h3>
+            <p>库仑定律描述真空中两个静止点电荷之间的相互作用力。定律表述为：真空中两个静止点电荷之间的相互作用力，与它们的电荷量的乘积成正比，与它们的距离的二次方成反比，作用力的方向在它们的连线上。</p>
+            <p>库仑定律的数学表达式为：</p>
+            <div class="math">`F = k (q_1 q_2)/(r^2)`</div>
+            <p>其中 <span class="math">`k`</span> 是静电力常量，<span class="math">`k = 9.0 xx 10^9 (N·m^2)//C^2`</span>；<span
+                    class="math">`q_1`</span> 和 <span class="math">`q_2`</span> 分别是两个点电荷的电荷量；<span
+                    class="math">`r`</span> 是它们之间的距离。</p>
+            <p>如果用矢量形式表示，设 <span class="math">`hat r`</span> 为从电荷 <span class="math">`q_1`</span> 指向电荷 <span
+                    class="math">`q_2`</span> 的单位矢量，则电荷 <span class="math">`q_2`</span> 受到的作用力为：</p>
+            <div class="math">`vec F = k (q_1 q_2)/(r^2) hat r`</div>
+            <p>当 <span class="math">`q_1 q_2 > 0`</span> 时，两电荷同号，作用力为斥力；当 <span class="math">`q_1 q_2 < 0`</span>
+                        时，两电荷异号，作用力为引力。</p>
+
+            <div class="highlight">
+                <h3>电场 电场强度</h3>
+                <p>电场是存在于电荷周围的一种特殊物质，它对放入其中的其他电荷有力的作用。电场是传递电荷间相互作用的媒介。</p>
+                <p>电场强度是描述电场力的性质的物理量，定义为放入电场中某点的试探电荷所受的电场力与它的电荷量的比值：</p>
+                <div class="math">`vec E = vec F/q`</div>
+                <p>电场强度的单位是牛每库，符号为 <span class="math">`N/C`</span>。电场强度是矢量，其方向规定为正电荷在该点所受电场力的方向。</p>
+                <p>点电荷的电场强度公式为：</p>
+                <div class="math">`E = k Q/(r^2)`</div>
+                <p>其中 <span class="math">`Q`</span> 是场源电荷的电荷量，<span class="math">`r`</span> 是研究点到场源电荷的距离。</p>
+                <p>电场强度叠加原理指出，多个点电荷在空间某点产生的电场强度，等于各个点电荷单独存在时在该点产生的电场强度的矢量和：</p>
+                <div class="math">`vec E = vec E_1 + vec E_2 + ... + vec E_n = sum_(i=1)^n vec E_i`</div>
+
+                <h3>静电的防止与利用</h3>
+                <p>静电现象在生产生活中既有危害也有应用。静电的危害主要包括：引起火灾和爆炸、损坏电子元器件、影响产品质量等。防止静电危害的方法有：接地、增加空气湿度、使用抗静电材料等。</p>
+                <p>静电的利用包括：静电除尘、静电喷涂、静电复印、静电植绒等。这些应用都是利用带电体能够吸引轻小物体的性质。</p>
+            </div>
+
+            <div class="highlight">
+                <h2>静电场中的能量</h2>
+
+                <h3>电势能和电势</h3>
+                <p>电荷在电场中受到电场力的作用，当电荷在电场中移动时，电场力会对电荷做功。由于静电场是保守场，电场力做功与路径无关，只与初末位置有关。</p>
+                <p>电荷在电场中某点的电势能，等于把它从该点移到零势能位置时电场力做的功。电势能用 <span class="math">`E_p`</span> 表示。</p>
+                <p>电势是描述电场能的性质的物理量，定义为电荷在电场中某点的电势能与它的电荷量的比值：</p>
+                <div class="math">`phi = E_p/q`</div>
+                <p>电势的单位是伏特，符号为 <span class="math">`V`</span>。电势是标量，只有大小没有方向。</p>
+                <p>点电荷电场中的电势公式为（取无穷远处电势为零）：</p>
+                <div class="math">`phi = k Q/r`</div>
+                <p>电势叠加原理指出，多个点电荷在空间某点产生的电势，等于各个点电荷单独存在时在该点产生的电势的代数和：</p>
+                <div class="math">`phi = phi_1 + phi_2 + ... + phi_n = sum_(i=1)^n phi_i`</div>
+
+                <h3>电势差</h3>
+                <p>电场中两点间电势的差值叫做电势差，也叫电压，用 <span class="math">`U`</span> 表示：</p>
+                <div class="math">`U_(AB) = phi_A - phi_B`</div>
+                <p>电势差与电场力做功的关系为：</p>
+                <div class="math">`W_(AB) = q U_(AB) = q(phi_A - phi_B)`</div>
+                <p>这表明，电场力做的功等于电荷量与电势差的乘积。</p>
+
+                <h3>电势差与电场强度的关系</h3>
+                <p>在匀强电场中，电势差与电场强度之间存在简单的关系。设匀强电场的电场强度为 <span class="math">`E`</span>，沿电场方向的两点A、B之间的距离为 <span
+                        class="math">`d`</span>，则：</p>
+                <div class="math">`U_(AB) = E d`</div>
+                <p>或写成：</p>
+                <div class="math">`E = U_(AB)/d`</div>
+                <p>这表明，匀强电场中电场强度的大小等于沿电场方向单位距离上的电势差。电场强度的方向指向电势降低最快的方向。</p>
+
+                <h3>电容器的电容</h3>
+                <p>电容器是储存电荷和电能的元件。平行板电容器是最简单的电容器，由两块彼此绝缘又互相靠近的平行金属板组成。</p>
+                <p>电容是描述电容器容纳电荷本领的物理量，定义为电容器所带的电荷量与两极板间电势差的比值：</p>
+                <div class="math">`C = Q/U`</div>
+                <p>电容的单位是法拉，符号为 <span class="math">`F`</span>。常用的单位还有微法 <span class="math">`(mu F)`</span> 和皮法 <span
+                        class="math">`(pF)`</span>，它们的关系是：</p>
+                <div class="math">`1 F = 10^6 mu F = 10^(12) pF`</div>
+                <p>平行板电容器的电容公式为：</p>
+                <div class="math">`C = (epsilon_r S)/(4 pi k d) = (epsilon S)/d`</div>
+                <p>其中 <span class="math">`S`</span> 是极板的正对面积，<span class="math">`d`</span> 是两极板间的距离，<span
+                        class="math">`epsilon_r`</span> 是相对介电常数，<span class="math">`epsilon`</span> 是介电常数。</p>
+
+                <h3>带电粒子在电场中的运动</h3>
+                <p>带电粒子在电场中受到电场力的作用，其运动遵循牛顿运动定律。质量为 <span class="math">`m`</span>、电荷量为 <span class="math">`q`</span>
+                    的带电粒子在电场强度为 <span class="math">`E`</span> 的匀强电场中受到的电场力为：</p>
+                <div class="math">`F = q E`</div>
+                <p>根据牛顿第二定律，粒子的加速度为：</p>
+                <div class="math">`a = F/m = (q E)/m`</div>
+                <p>带电粒子在电场中的运动可以分为两种情况：</p>
+                <p>（1）带电粒子沿电场线方向进入匀强电场：做匀变速直线运动，可用运动学公式求解。</p>
+                <p>（2）带电粒子垂直于电场线方向进入匀强电场：做类平抛运动，可分解为沿初速度方向的匀速直线运动和沿电场力方向的匀加速直线运动。</p>
+                <p>设粒子以初速度 <span class="math">`v_0`</span> 垂直进入匀强电场，极板长度为 <span class="math">`L`</span>，则：</p>
+                <div class="math">`L = v_0 t`</div>
+                <div class="math">`y = 1/2 a t^2 = 1/2 (q E)/m (L/v_0)^2`</div>
+                <p>其中 <span class="math">`y`</span> 是粒子在竖直方向的偏转距离。</p>
+            </div>
+
+            <h2>电路及其应用</h2>
+
+            <h3>电源和电流</h3>
+            <p>电源是能把电子从正极搬运到负极的装置，其作用是维持电路两端的电势差，使电路中形成持续的电流。</p>
+            <p>电流强度是描述电流强弱的物理量，定义为通过导体横截面的电荷量与通过这些电荷量所用时间的比值：</p>
+            <div class="math">`I = Q/t`</div>
+            <p>电流的单位是安培，符号为 <span class="math">`A`</span>。电流是标量，但有方向，规定正电荷定向移动的方向为电流的方向。</p>
+            <p>电流的微观表达式为：</p>
+            <div class="math">`I = n q S v`</div>
+            <p>其中 <span class="math">`n`</span> 是单位体积内的自由电荷数，<span class="math">`q`</span> 是每个自由电荷的电荷量，<span
+                    class="math">`S`</span> 是导体的横截面积，<span class="math">`v`</span> 是自由电荷定向移动的平均速率。</p>
+
+            <h3>导体的电阻</h3>
+            <p>电阻是描述导体对电流阻碍作用的物理量。同种材料的导体，其电阻 <span class="math">`R`</span> 与它的长度 <span class="math">`l`</span>
+                成正比，与它的横截面积 <span class="math">`S`</span> 成反比，这就是电阻定律：</p>
+            <div class="math">`R = rho l/S`</div>
+            <p>其中 <span class="math">`rho`</span> 是材料的电阻率，单位是欧姆·米，符号为 <span class="math">`Ω·m`</span>。</p>
+
+            <h3>实验：导体电阻率的测量</h3>
+            <p>测量金属丝的电阻率需要测量金属丝的电阻 <span class="math">`R`</span>、长度 <span class="math">`l`</span> 和直径 <span
+                    class="math">`d`</span>（计算横截面积 <span class="math">`S = pi (d/2)^2`</span>），然后根据电阻定律计算电阻率：</p>
+            <div class="math">`rho = (R S)/l = (pi R d^2)/(4 l)`</div>
+
+            <h3>串联电路和并联电路</h3>
+            <p><strong>串联电路的特点：</strong></p>
+            <p>电流处处相等：<span class="math">`I = I_1 = I_2 = ... = I_n`</span></p>
+            <p>总电压等于各部分电压之和：<span class="math">`U = U_1 + U_2 + ... + U_n`</span></p>
+            <p>总电阻等于各部分电阻之和：<span class="math">`R = R_1 + R_2 + ... + R_n`</span></p>
+            <p>电压分配与电阻成正比：<span class="math">`U_1/U_2 = R_1/R_2`</span></p>
+
+            <p><strong>并联电路的特点：</strong></p>
+            <p>总电流等于各支路电流之和：<span class="math">`I = I_1 + I_2 + ... + I_n`</span></p>
+            <p>各支路电压相等：<span class="math">`U = U_1 = U_2 = ... = U_n`</span></p>
+            <p>总电阻的倒数等于各电阻倒数之和：<span class="math">`1/R = 1/R_1 + 1/R_2 + ... + 1/R_n`</span></p>
+            <p>电流分配与电阻成反比：<span class="math">`I_1/I_2 = R_2/R_1`</span></p>
+
+            <h3>实验：练习使用多用电表</h3>
+            <p>多用电表是一种多功能电学测量仪器，可以用来测量电压、电流和电阻等。使用多用电表时需要注意选择正确的测量功能和量程，并注意表笔的连接方式。</p>
+
+            <h2>电能 能量守恒定律</h2>
+
+            <h3>电路中的能量转化</h3>
+            <p>电流通过用电器时，电场力对电荷做功，电能转化为其他形式的能量。电功的计算公式为：</p>
+            <div class="math">`W = U I t`</div>
+            <p>电功率表示电流做功的快慢，定义为单位时间内电流做的功：</p>
+            <div class="math">`P = W/t = U I`</div>
+            <p>对于纯电阻电路，根据欧姆定律 <span class="math">`U = I R`</span>，还可以得到：</p>
+            <div class="math">`P = I^2 R = U^2/R`</div>
+            <p>焦耳定律指出，电流通过导体产生的热量与电流的二次方、导体的电阻和通电时间成正比：</p>
+            <div class="math">`Q = I^2 R t`</div>
+
+            <h3>闭合电路的欧姆定律</h3>
+            <p>闭合电路由电源和外电路组成。电源有内阻 <span class="math">`r`</span>，外电路的电阻为 <span class="math">`R`</span>。</p>
+            <p>闭合电路的欧姆定律表述为：闭合电路中的电流跟电源的电动势成正比，跟内、外电路的电阻之和成反比：</p>
+            <div class="math">`I = E/(R + r)`</div>
+            <p>其中 <span class="math">`E`</span> 是电源的电动势。</p>
+            <p>路端电压（外电路两端的电压）为：</p>
+            <div class="math">`U = I R = E - I r`</div>
+            <p>当外电路断开时（<span class="math">`I = 0`</span>），路端电压等于电源电动势：<span class="math">`U = E`</span>。</p>
+            <p>当外电路短路时（<span class="math">`R = 0`</span>），电流达到最大值：<span class="math">`I_m = E/r`</span>。</p>
+
+            <h3>实验：电池电动势和内阻的测量</h3>
+            <p>测量电源电动势和内阻常用的方法有伏安法、伏阻法和安阻法。其中伏安法是最常用的方法，通过改变外电阻，测量多组路端电压和电流值，然后利用闭合电路的欧姆定律列方程求解。</p>
+            <p>根据 <span class="math">`U = E - I r`</span>，以 <span class="math">`U`</span> 为纵轴、<span
+                    class="math">`I`</span> 为横轴作图，得到一条直线。直线的纵截距等于电动势 <span class="math">`E`</span>，斜率的绝对值等于内阻 <span
+                    class="math">`r`</span>。</p>
+
+            <div class="highlight">
+                <h2>电磁感应与电磁波初步</h2>
+
+                <h3>磁场 磁感线</h3>
+                <p>磁场是存在于磁体和电流周围的一种特殊物质，它对放入其中的磁体或电流有力的作用。磁场是传递磁相互作用的媒介。。。。。。。。。。。。。。。。。。。。。。</p>
+                <p>磁感线是用来形象描述磁场的假想曲线。磁感线的疏密表示磁场的强弱，磁感线上某点的切线方向表示该点的磁场方向。</p>
+                <p>磁感线的特点：（1）磁感线是闭合曲线，在磁体外部从N极指向S极，在磁体内部从S极指向N极；（2）磁感线不相交；（3）磁感线的疏密表示磁场的强弱。</p>
+
+                <h3>磁感应强度 磁通量</h3>
+                <p>磁感应强度是描述磁场强弱和方向的物理量，用 <span class="math">`B`</span> 表示。磁感应强度的方向规定为小磁针静止时N极所指的方向。</p>
+                <p>磁感应强度的单位是特斯拉，符号为 <span class="math">`T`</span>。</p>
+                <p>通电导线在磁场中受到的安培力与电流、导线长度和磁场方向有关。当导线与磁场方向垂直时，安培力为：</p>
+                <div class="math">`F = B I L`</div>
+                <p>由此可以定义磁感应强度：</p>
+                <div class="math">`B = F/(I L)`</div>
+                <p>磁通量是描述穿过某一面积的磁感线条数的物理量，定义为磁感应强度与垂直于磁场方向的面积的乘积：</p>
+                <div class="math">`Phi = B S`</div>
+                <p>当平面与磁场方向不垂直时，磁通量为：</p>
+                <div class="math">`Phi = B S cos theta = vec B * vec S`</div>
+                <p>其中 <span class="math">`theta`</span> 是磁场方向与平面法线方向的夹角。磁通量的单位是韦伯，符号为 <span
+                        class="math">`Wb`</span>，<span class="math">`1 Wb = 1 T·m^2`</span>。</p>
+
+                <h4>磁场强度与磁感应强度的对比</h4>
+                <p>在电磁学中，除了磁感应强度 <span class="math">`vec B`</span> 外，还引入磁场强度 <span class="math">`vec H`</span>
+                    来描述磁场。这两个物理量既有联系又有区别：</p>
+                <p><strong>磁感应强度 <span class="math">`vec
+                            B`</span></strong>：描述磁场对运动电荷或电流的作用力，是表征磁场<strong>力学效应</strong>的物理量。其定义式为：</p>
+                <div class="math">`vec F = I vec L xx vec B`</div>
+                <p>其中 <span class="math">`vec F`</span> 是安培力，<span class="math">`I`</span> 是电流，<span class="math">`vec
+                        L`</span> 是导线长度矢量（方向与电流相同）。当导线与磁场垂直时，力的大小为 <span class="math">`F = BIL`</span>。</p>
+                <p><strong>磁场强度 <span class="math">`vec
+                            H`</span></strong>：描述磁场源的强弱，是表征磁场<strong>源特性</strong>的物理量。在真空中，磁场强度与磁感应强度的关系为：</p>
+                <div class="math">`vec B = mu_0 vec H`</div>
+                <p>其中 <span class="math">`mu_0 = 4pi xx 10^(-7) H//m`</span> 是真空磁导率。磁场强度的单位是安培每米，符号为 <span
+                        class="math">`A//m`</span>。</p>
+                <p>在磁介质中，两者的关系为：</p>
+                <div class="math">`vec B = mu_0 (vec H + vec M)`</div>
+                <p>其中 <span class="math">`vec M`</span> 是磁化强度，表示介质被磁化的程度。也可以写成：</p>
+                <div class="math">`vec B = mu vec H = mu_0 mu_r vec H`</div>
+                <p>其中 <span class="math">`mu`</span> 是介质的磁导率，<span class="math">`mu_r`</span> 是相对磁导率。</p>
+                <p><strong>对比总结</strong>：</p>
+                <table>
+                    <tr style="background-color: #f0f0f0;">
+                        <th>物理量</th>
+                        <th>符号</th>
+                        <th>单位</th>
+                        <th>物理意义</th>
+                    </tr>
+                    <tr>
+                        <td>磁感应强度</td>
+                        <td><span class="math">`vec B`</span></td>
+                        <td>特斯拉 (T)</td>
+                        <td>描述磁场的力学效应</td>
+                    </tr>
+                    <tr>
+                        <td>磁场强度</td>
+                        <td><span class="math">`vec H`</span></td>
+                        <td>安培/米 (A/m)</td>
+                        <td>描述磁场源的特性</td>
+                    </tr>
+                </table>
+                <p>在高中物理中，通常只使用磁感应强度 <span class="math">`vec B`</span> 来描述磁场。这是因为 <span class="math">`vec B`</span>
+                    直接反映了磁场对电流的作用力，更便于理解和测量。而在研究磁介质中的磁场时，引入 <span class="math">`vec H`</span> 可以使问题的处理更加简便，因为 <span
+                        class="math">`vec H`</span> 的环路定理与介质无关。</p>
+
+                <h3>电磁感应现象及应用</h3>
+                <p>1831年，法拉第发现了电磁感应现象：当穿过闭合电路的磁通量发生变化时，电路中就会产生感应电流。</p>
+                <p>产生感应电流的条件：（1）电路必须闭合；（2）穿过电路的磁通量必须发生变化。</p>
+                <p>引起磁通量变化的方式有三种：（1）磁感应强度 <span class="math">`B`</span> 变化；（2）回路面积 <span class="math">`S`</span>
+                    变化；（3）磁场与回路平面的夹角 <span class="math">`theta`</span> 变化。</p>
+
+                <h3>电磁波的发现及应用</h3>
+                <p>麦克斯韦在总结电磁现象规律的基础上，建立了完整的电磁场理论，并预言了电磁波的存在。麦克斯韦理论的两个基本假设是：（1）变化的磁场产生电场；（2）变化的电场产生磁场。</p>
+                <p>1888年，赫兹通过实验证实了电磁波的存在。</p>
+                <p>电磁波是横波，电场强度 <span class="math">`vec E`</span> 和磁感应强度 <span class="math">`vec B`</span>
+                    相互垂直，且都垂直于传播方向。电磁波在真空中的传播速度为：</p>
+                <div class="math">`c = 3.00 xx 10^8 m/s`</div>
+                <p>电磁波的波长 <span class="math">`lambda`</span>、频率 <span class="math">`f`</span> 和波速 <span
+                        class="math">`c`</span> 之间的关系为：</p>
+                <div class="math">`c = lambda f`</div>
+                <p>电磁波谱按波长从长到短（频率从低到高）依次为：无线电波、红外线、可见光、紫外线、X射线、γ射线。</p>
+
+                <h3>能量量子化</h3>
+                <p>1900年，普朗克为了解释黑体辐射规律，提出了能量量子化假说：振子的能量只能取某些分立值，是最小能量单元的整数倍。</p>
+                <div class="math">`E = n h f`</div>
+                <p>其中 <span class="math">`n = 0, 1, 2, 3, ...`</span>，<span class="math">`h`</span> 是普朗克常量，<span
+                        class="math">`h = 6.63 xx 10^(-34) J·s`</span>，<span class="math">`f`</span> 是电磁波的频率。</p>
+                <p>1905年，爱因斯坦提出了光量子假说，认为光本身就是由一个个不可分割的能量子组成的，这些能量子后来被称为光子。光子的能量为：</p>
+                <div class="math">`epsilon = h f`</div>
+                <p>这一假说成功解释了光电效应现象。</p>
+            </div>
+            <h2>总结</h2>
+            <p>高中电磁学内容从静电场开始，逐步过渡到恒定电流、磁场，最后以电磁感应和电磁波结束，形成了一个完整的知识体系。这一体系的核心是场的概念，学生需要理解电场和磁场作为物质存在的形式，以及它们对电荷和电流的作用规律。同时，能量观点贯穿始终，从电势能、电势到电能转化，再到电磁波的能量传播，体现了物理学中能量守恒这一基本规律的重要性。
+            </p>
+        </section>
+
+        <section>
+            <h1>模板</h1>
+            <p>这是一个行内数学公式：<span class="math">`sum_(i=1)^n i^3=((n(n+1))/2)^2`</span> </p>
+            <p>
+                <span class="math-space">
+                    <span class="text">这是一个块级数学公式：</span>
+                    <span class="math">`sum_(i=1)^n i^3=((n(n+1))/2)^2`</span>
+                    <span class="math-end">公式末尾内容</span>
+                </span>
+            </p>
+            <p>下面是一个独立行块级公式：
+            <div class="math">`sum_(i=1)^n i^3=((n(n+1))/2)^2`</div>
+            </p>
+        </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@hexiongwu1995/my-template@latest/dist/script/script.js"></script>
+</body>
+
+</html>
