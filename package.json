@@ -1,6 +1,6 @@
 {
   "name": "@hexiongwu1995/my-template",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A responsive HTML template with math support",
   "main": "dist/script/script.js",
   "files": [
