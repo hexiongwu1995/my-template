@@ -1,0 +1,25 @@
+        span.math {
+            font-size: 0.8rem;
+        }
+
+        span.math-space {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        div.math {
+            text-align: center;
+            font-size: 1rem;
+        }
+        
+        @media screen and (max-width: 600px) {
+            span.math {
+                font-size: 1rem;
+            }
+            div.math {
+                font-size: 1rem;
+            }
+        }
