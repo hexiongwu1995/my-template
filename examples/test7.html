@@ -60,7 +60,7 @@
             display: none;
         }
 
-        /* #toc-root li:hover>ol {
+        /* #toc-root li>ol {
             display: block;
         } */
 
@@ -135,6 +135,11 @@
         .icon-Numbering:hover {
             background-color: #dcdcdc63;
             text-decoration: underline;
+        }
+
+        .rotate-90 {
+            transform: rotate(90deg);
+            transition: all 0.3s ease-in-out;
         }
     </style>
 </head>
@@ -234,9 +239,9 @@
         const article = document.querySelector('article');
         const tocRoot = document.getElementById('toc-root');
 
-        const toggleNumbering = document.querySelector('.icon-Numbering');
-        const root = document.documentElement;
-        const value = getComputedStyle(root).getPropertyValue('--enable-numbering').trim();
+        // const toggleNumbering = document.querySelector('.icon-Numbering');
+        // const root = document.documentElement;
+        // const value = getComputedStyle(root).getPropertyValue('--enable-numbering').trim();
 
         // 获取所有标题 h1-h6
         const headings = Array.from(article.querySelectorAll('h1, h2, h3, h4, h5, h6'));
@@ -276,28 +281,37 @@
 
             const stack = [{ level: 1, ol: tocRoot }];
 
-            headings.forEach((heading) => {
+            headings.forEach((heading, index) => {
 
                 const root = document.documentElement;
                 const value = getComputedStyle(root).getPropertyValue('--enable-numbering').trim();
-                const arrow = document.createElement('span');
-                arrow.classList.add('iconfont', 'icon-arrow2');
 
                 const currentLevel = getLevel(heading);
+
+                const arrow = document.createElement('span');
+                arrow.classList.add('iconfont', 'icon-arrow2');
 
                 // 新建一个li元素，用于承载当前的heading元素
                 const li = document.createElement('li');
                 const a = document.createElement('a');
                 a.href = '#' + heading.id;
                 a.innerHTML = heading.textContent;
-                a.appendChild(arrow);
+                // 判断当前 heading 后面是否存在层级更深的子 heading
+                const nextHeading = headings[index + 1];
+                const hasChildren = nextHeading && getLevel(nextHeading) > currentLevel;
+
+                if (hasChildren) {
+                    a.appendChild(arrow);
+                }
                 // 将 a 添加到 li 中
                 li.appendChild(a);
+
 
                 // 如果栈顶的heading level 大于 当前的heading level，让栈顶回退到栈顶level等于当前heading level的状态
                 while (stack[stack.length - 1].level > currentLevel) {
                     stack.pop();
                 }
+
 
                 if (currentLevel > stack[stack.length - 1].level) {
                     // 如果当前的heading level 大于栈顶的heading level
@@ -321,6 +335,51 @@
 
         };
         generateToc();
+
+
+        // const iconExpand = document.querySelector('.icon-expand-all');
+        // const ol = tocRoot.querySelectorAll('ol');
+        // iconExpand.addEventListener('click', () => {
+        //     ol.forEach((item) => {
+        //         item.style.display = item.style.display === 'block' ? 'none' : 'block';
+        //     })
+        // })
+
+
+        // tocRoot.addEventListener('click', (e) => {
+        //     const arrow = document.querySelectorAll('.icon-arrow2');
+        //     if (!arrow) return;
+        //     e.preventDefault();
+        //     e.stopPropagation();
+
+
+        // })
+
+
+        tocRoot.addEventListener('click', (e) => {
+            const arrow = e.target.closest('.icon-arrow2');
+            if (!arrow) return;
+
+            e.preventDefault();  // 阻止 <a> 的默认跳转
+            e.stopPropagation();  // 阻止事件冒泡
+
+            const li = arrow.closest('li');
+            const nestedOl = li.querySelector(':scope > ol');
+            if (nestedOl) {
+                nestedOl.style.display = nestedOl.style.display === 'block' ? 'none' : 'block';
+            }
+            if (nestedOl && nestedOl.style.display === 'block') {
+                arrow.classList.add('rotate-90');
+            } else {
+                arrow.classList.remove('rotate-90');
+            }
+        });
+
+
+
+        const toggleNumbering = document.querySelector('.icon-Numbering');
+        const root = document.documentElement;
+        // const value = getComputedStyle(root).getPropertyValue('--enable-numbering').trim();
 
         toggleNumbering.addEventListener('click', () => {
 
