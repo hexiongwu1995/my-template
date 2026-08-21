@@ -9,11 +9,11 @@
     <!-- <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/@hexiongwu1995/my-template@latest/dist/css/counter-heading.css"> -->
     <script src="https://cdn.jsdelivr.net/npm/@hexiongwu1995/my-template@latest/dist/script/mathjax-config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@4/startup.js"></script>
-    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5215219_f9saitsi7rl.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5215219_78c49anpgee.css">
 
     <style>
         html {
-            --enable-numbering: true;
+            --enable-numbering: false;
         }
 
         html,
@@ -97,9 +97,30 @@
             margin: 0 auto;
             padding: 0px;
         }
-        .icon-Numbering{
-            color: #232323;
-            font-size: 30px;
+
+        .function-panel {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px 20px;
+        }
+
+        .icon-menu3,
+        .icon-Files,
+        .icon-expand-all,
+        .icon-Numbering {
+            color: #080808eb;
+            font-size: 25px;
+            padding: 15px;
+            border-radius: 30%;
+        }
+
+        .icon-menu3:hover,
+        .icon-Files:hover,
+        .icon-expand-all:hover,
+        .icon-Numbering:hover {
+            background-color: #dcdcdc63;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -107,10 +128,15 @@
 <body>
     <div class="container">
         <aside>
+            <div class="function-panel">
+                <span class="iconfont icon-menu3"></span>
+                <span class="iconfont icon-Files"></span>
+                <span class="iconfont icon-expand-all"></span>
                 <span class="iconfont icon-Numbering"></span>
+            </div>
+
             <nav>
                 <ol id="toc-root">
-
                 </ol>
             </nav>
         </aside>
@@ -190,53 +216,55 @@
 
     <script>
 
-        // 这段代码的目的是根据artcle中的heading，生成侧边栏目录。
+        const article = document.querySelector('article');
+        const tocRoot = document.getElementById('toc-root');
+
+        const toggleNumbering = document.querySelector('.icon-Numbering');
+        const root = document.documentElement;
+        const value = getComputedStyle(root).getPropertyValue('--enable-numbering').trim();
+
+        // 获取所有标题 h1-h6
+        const headings = Array.from(article.querySelectorAll('h1, h2, h3, h4, h5, h6'));
+        // if (headings.length === 0) return;
+
+        // 计算每个 heading 的层级数字 (1-6)
+        const getLevel = (el) => parseInt(el.tagName[1], 10);
+
+        // 给每个 heading 生成id、编号、原始文本内容
+        // counters 记录每一层的当前计数，例如 [2, 3] 表示当前在 2.3
+        const counters = [];
+        headings.forEach((heading) => {
+            const level = getLevel(heading);
+
+            // 确保数组有足够的长度
+            while (counters.length < level) {
+                counters.push(0);
+            }
+            // 截断到当前层级
+            counters.length = level;
+            // 当前层级计数+1（用 level-1 作为索引）
+            counters[level - 1] = counters[level - 1] + 1;
+
+            const id = counters.join('-');
+            heading.id = "heading-" + id;
+
+            const numbering = counters.join('.');
+
+            heading.setAttribute('data-original-text', heading.textContent);
+            heading.setAttribute('data-numbering', numbering);
+        })
 
         function generateToc() {
-            const article = document.querySelector('article');
-            const tocRoot = document.getElementById('toc-root');
             if (!article || !tocRoot) return;
-
-            // 获取所有标题 h1-h6
-            const headings = Array.from(article.querySelectorAll('h1, h2, h3, h4, h5, h6'));
-            if (headings.length === 0) return;
-
-            // 计算每个 heading 的层级数字 (1-6)
-            const getLevel = (el) => parseInt(el.tagName[1], 10);
-
-            // 给每个 heading 生成编号和 id
-            // counters 记录每一层的当前计数，例如 [2, 3] 表示当前在 2.3
-            const counters = [];
-            headings.forEach((heading) => {
-                const level = getLevel(heading);
-
-                // 确保数组有足够的长度
-                while (counters.length < level) {
-                    counters.push(0);
-                }
-                // 截断到当前层级
-                counters.length = level;
-                // 当前层级计数+1（用 level-1 作为索引）
-                counters[level - 1] = counters[level - 1] + 1;
-                
-
-                const id = counters.join('-');
-                heading.id = "heading-" + id;
-
-                // const numbering = counters.join('.');
-
-                // const toggleNumbering = document.getElementById('toggleNumbering');
-                
-                // if (toggleNumbering.checked) {
-                //     heading.textContent = numbering + ' ' + heading.textContent;
-                // }
-            });
 
             tocRoot.innerHTML = '';
 
             const stack = [{ level: 1, ol: tocRoot }];
 
             headings.forEach((heading) => {
+
+                const root = document.documentElement;
+                const value = getComputedStyle(root).getPropertyValue('--enable-numbering').trim();
 
                 const currentLevel = getLevel(heading);
 
@@ -245,7 +273,6 @@
                 const a = document.createElement('a');
                 a.href = '#' + heading.id;
                 a.textContent = heading.textContent;
-                li.appendChild(a);
 
                 // 如果栈顶的heading level 大于 当前的heading level，让栈顶回退到栈顶level等于当前heading level的状态
                 while (stack[stack.length - 1].level > currentLevel) {
@@ -268,13 +295,37 @@
                     // console.log(stack)
                 }
 
+                // 将 a 添加到 li 中
+                li.appendChild(a);
+
                 // 将li元素添加到栈顶的ol元素下
                 stack[stack.length - 1].ol.appendChild(li);
             });
 
         };
-        generateToc()
-        // document.getElementById('toggleNumbering').addEventListener('change', toggleNumbering);
+        generateToc();
+
+
+        toggleNumbering.addEventListener('click', () => {
+
+            const currentValue = getComputedStyle(root).getPropertyValue('--enable-numbering').trim();
+            const newValue = currentValue === 'true' ? 'false' : 'true';
+            root.style.setProperty('--enable-numbering', newValue);
+
+            headings.forEach((heading) => {
+
+                if (newValue === 'true') {
+                    heading.textContent = heading.getAttribute('data-numbering') + ' ' + heading.getAttribute('data-original-text');
+                } else if (newValue === 'false') {
+                    heading.textContent = heading.getAttribute('data-original-text');
+                }
+            });
+
+            generateToc();
+        });
+
+
+
     </script>
 </body>
 
