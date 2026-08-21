@@ -294,18 +294,18 @@
             heading.setAttribute('data-numbering', numbering);
         })
 
-        // 保存 heading 与 TOC 中 <a> 元素的映射，用于后续更新文本而不重建结构
-        const tocLinkMap = new Map();
-
-        function buildToc() {
+        function generateToc() {
             if (!article || !tocRoot) return;
 
             tocRoot.innerHTML = '';
-            tocLinkMap.clear();
 
             const stack = [{ level: 1, ol: tocRoot }];
 
             headings.forEach((heading, index) => {
+
+                const root = document.documentElement;
+                const value = getComputedStyle(root).getPropertyValue('--enable-numbering').trim();
+
                 const currentLevel = getLevel(heading);
 
                 const arrow = document.createElement('span');
@@ -315,10 +315,7 @@
                 const li = document.createElement('li');
                 const a = document.createElement('a');
                 a.href = '#' + heading.id;
-
-                // 保存映射关系，方便后续更新文本
-                tocLinkMap.set(heading, a);
-
+                a.innerHTML = heading.textContent;
                 // 判断当前 heading 后面是否存在层级更深的子 heading
                 const nextHeading = headings[index + 1];
                 const hasChildren = nextHeading && getLevel(nextHeading) > currentLevel;
@@ -329,10 +326,12 @@
                 // 将 a 添加到 li 中
                 li.appendChild(a);
 
+
                 // 如果栈顶的heading level 大于 当前的heading level，让栈顶回退到栈顶level等于当前heading level的状态
                 while (stack[stack.length - 1].level > currentLevel) {
                     stack.pop();
                 }
+
 
                 if (currentLevel > stack[stack.length - 1].level) {
                     // 如果当前的heading level 大于栈顶的heading level
@@ -346,54 +345,25 @@
 
                     // 将当前的heading level 和 新建的ol元素压到栈顶
                     stack.push({ level: currentLevel, ol: newOl });
+                    // console.log(tocRoot.outerHTML)
+                    // console.log(stack)
                 }
 
                 // 将li元素添加到栈顶的ol元素下
                 stack[stack.length - 1].ol.appendChild(li);
             });
 
-            updateTocText();
-        }
-
-        // 只更新 TOC 和 heading 的文本内容，不重建 DOM 结构
-        function updateTocText() {
-            const root = document.documentElement;
-            const value = getComputedStyle(root).getPropertyValue('--enable-numbering').trim();
-
-            headings.forEach((heading) => {
-                const a = tocLinkMap.get(heading);
-                if (!a) return;
-
-                // 保留 arrow 元素，只更新文本部分
-                const arrow = a.querySelector('.icon-arrow2');
-
-                let newText;
-                if (value === 'true') {
-                    newText = heading.getAttribute('data-numbering') + '. ' + heading.getAttribute('data-original-text');
-                } else {
-                    newText = heading.getAttribute('data-original-text');
-                }
-
-                heading.textContent = newText;
-
-                // 更新或创建文本节点
-                if (a.childNodes.length > 0 && a.childNodes[0].nodeType === Node.TEXT_NODE) {
-                    a.childNodes[0].nodeValue = newText;
-                } else {
-                    a.insertBefore(document.createTextNode(newText), a.firstChild);
-                }
-
-                // 确保 arrow 仍在 a 中
-                if (arrow && !a.contains(arrow)) {
-                    a.appendChild(arrow);
-                }
-            });
-        }
-
-        buildToc();
+        };
+        generateToc();
 
 
-
+        // const iconExpand = document.querySelector('.icon-expand-all');
+        // const ol = tocRoot.querySelectorAll('ol');
+        // iconExpand.addEventListener('click', () => {
+        //     ol.forEach((item) => {
+        //         item.style.display = item.style.display === 'block' ? 'none' : 'block';
+        //     })
+        // })
 
 
 
@@ -427,20 +397,23 @@
         const root = document.documentElement;
 
         toggleNumbering.addEventListener('click', () => {
+
             const currentValue = getComputedStyle(root).getPropertyValue('--enable-numbering').trim();
             const newValue = currentValue === 'true' ? 'false' : 'true';
             root.style.setProperty('--enable-numbering', newValue);
 
-            updateTocText();
+            headings.forEach((heading) => {
+
+                if (newValue === 'true') {
+                    heading.textContent = heading.getAttribute('data-numbering') + '. ' + heading.getAttribute('data-original-text');
+                } else if (newValue === 'false') {
+                    heading.textContent = heading.getAttribute('data-original-text');
+                }
+            });
+
+            generateToc();
         });
 
-        // const iconExpand = document.querySelector('.icon-expand-all');
-        // const ol = tocRoot.querySelectorAll('ol');
-        // iconExpand.addEventListener('click', () => {
-        //     ol.forEach((item) => {
-        //         item.style.display = item.style.display === 'block' ? 'none' : 'block';
-        //     })
-        // })
 
 
     </script>
