@@ -9,7 +9,7 @@
     <!-- <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/@hexiongwu1995/my-template@latest/dist/css/counter-heading.css"> -->
     <script src="https://cdn.jsdelivr.net/npm/@hexiongwu1995/my-template@latest/dist/script/mathjax-config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@4/startup.js"></script>
-    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5215219_78c49anpgee.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5215219_3kq885m56e7.css">
 
     <style>
         html {
@@ -46,19 +46,6 @@
             padding: 0px;
         }
 
-        nav ol {
-            /* counter-reset: item; */
-            list-style: none;
-        }
-
-        /* nav ol li {
-            counter-increment: item;
-        } */
-
-        /* nav ol li::before {
-            content: counters(item, ".") " ";
-        } */
-
         nav ol li a {
             text-decoration: none;
             color: #000;
@@ -69,16 +56,43 @@
             padding-top: 20px;
         }
 
-        #toc-root li {
+        #toc-root li ol {
+            display: none;
+        }
+
+        /* #toc-root li:hover>ol {
+            display: block;
+        } */
+
+        #toc-root li a {
             width: 100%;
             line-height: 2em;
-            margin-left: 20px;
         }
 
-        #toc-root li:hover {
+        #toc-root li a {
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #toc-root li>a {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        #toc-root li>ol>li>a {
+            padding-left: 40px;
+            padding-right: 20px;
+        }
+
+        #toc-root li>ol>li>ol>li>a {
+            padding-left: 60px;
+            padding-right: 20px;
+        }
+
+        #toc-root li a:hover {
             background-color: #dcdcdc63
         }
-
 
         .overlay {
             display: none;
@@ -133,6 +147,7 @@
                 <span class="iconfont icon-Files"></span>
                 <span class="iconfont icon-expand-all"></span>
                 <span class="iconfont icon-Numbering"></span>
+
             </div>
 
             <nav>
@@ -265,6 +280,8 @@
 
                 const root = document.documentElement;
                 const value = getComputedStyle(root).getPropertyValue('--enable-numbering').trim();
+                const arrow = document.createElement('span');
+                arrow.classList.add('iconfont', 'icon-arrow2');
 
                 const currentLevel = getLevel(heading);
 
@@ -272,7 +289,10 @@
                 const li = document.createElement('li');
                 const a = document.createElement('a');
                 a.href = '#' + heading.id;
-                a.textContent = heading.textContent;
+                a.innerHTML = heading.textContent;
+                a.appendChild(arrow);
+                // 将 a 添加到 li 中
+                li.appendChild(a);
 
                 // 如果栈顶的heading level 大于 当前的heading level，让栈顶回退到栈顶level等于当前heading level的状态
                 while (stack[stack.length - 1].level > currentLevel) {
@@ -295,16 +315,12 @@
                     // console.log(stack)
                 }
 
-                // 将 a 添加到 li 中
-                li.appendChild(a);
-
                 // 将li元素添加到栈顶的ol元素下
                 stack[stack.length - 1].ol.appendChild(li);
             });
 
         };
         generateToc();
-
 
         toggleNumbering.addEventListener('click', () => {
 
