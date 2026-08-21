@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    /* Alignment */
+    mtable.right-align mtd,
+    mtable mtd.right-align,
+    mtable.left-align mtd.right-align,
+    mtable.aligned mtd:nth-child(odd) {
+      justify-items: end;
+      text-align: right;
+    }
+
+    mtable.cases mtd,
+    mtable.left-align mtd,
+    mtable mtd.left-align,
+    mtable.aligned mtd:nth-child(even),
+    math:is(:not([display]))>mtable.multiline-equation mtd {
+      justify-items: start;
+      text-align: left;
+    }
+
+    mtable.cases mtd,
+    mtable.aligned mtd,
+    mtable mtd.flushed,
+    mtable mtd.left-flush {
+      padding-left: 0;
+    }
+
+    mtable.cases mtd,
+    mtable.aligned mtd,
+    mtable mtd.flushed,
+    mtable mtd.right-flush {
+      padding-right: 0;
+    }
+
+    /* Tables */
+    mtable {
+      math-style: inherit;
+    }
+
+    mtd {
+      math-depth: auto-add;
+      math-style: compact;
+      math-shift: compact;
+    }
+
+    /* Equations */
+    mtable.multiline-equation mtd {
+      math-depth: inherit;
+      math-style: inherit;
+      math-shift: inherit;
+      padding: 0;
+    }
+
+    math>mtable.multiline-equation mtr:not(:last-child) mtd {
+      padding-bottom: 0.5em;
+    }
+
+    /* Fractions */
+    mfrac {
+      padding-inline: 0;
+      margin-inline: 0.1em;
+    }
+
+    /* Accents */
+    mover[accent="true" i]> :first-child {
+      font-feature-settings: "dtls";
+    }
+
+    mover.dotted[accent="true" i]> :first-child {
+      font-feature-settings: "dtls" 0;
+    }
+
+    /* Other rules for scriptlevel, displaystyle and math-shift */
+    munder> :nth-child(2),
+    munderover> :nth-child(2) {
+      math-shift: compact
+    }
+
+    munder[accentunder="true" i]> :not(:first-child),
+    mover[accent="true" i]> :not(:first-child) {
+      math-depth: inherit;
+      math-style: inherit;
+      math-shift: inherit;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>1 Preliminaries</h2>
+  <p>This section introduces the basic definitions required for the subsequent results. We begin by formally defining
+    even and odd integers, which form the foundation of our discussion on number-theoretic properties.</p>
+  <figure id="loc-1">
+    <div class="thmbox"
+      style="border-left: 5px solid #565656a2; border-radius: 10px;  background: #adadad2f; padding: 0.8em;">
+      <strong>Definition</strong> 1.a<span style="white-space: pre-wrap">&#x20;&#x20;&#x20;&#x20;</span>Even
+      Integer<br><br>An integer <math>
+        <mi>𝑛</mi>
+      </math> is called <strong>even</strong> if it is divisible by <math>
+        <mn>2</mn>
+      </math>, i.e., there exists an integer <math>
+        <mi>𝑘</mi>
+      </math> such that <math>
+        <mi>𝑛</mi>
+        <mo>=</mo>
+        <mn>2</mn>
+        <mi>𝑘</mi>
+      </math>.</div>
+  </figure>
+  <figure id="loc-2">
+    <div class="thmbox"
+      style="border-left: 5px solid #565656a2; border-radius: 10px;  background: #adadad2f; padding: 0.8em;">
+      <strong>Definition</strong> 1.b<span style="white-space: pre-wrap">&#x20;&#x20;&#x20;&#x20;</span>Odd
+      Integer<br><br>An integer <math>
+        <mi>𝑛</mi>
+      </math> is called <strong>odd</strong> if it is not divisible by <math>
+        <mn>2</mn>
+      </math>, i.e., there exists an integer <math>
+        <mi>𝑘</mi>
+      </math> such that <math>
+        <mi>𝑛</mi>
+        <mo>=</mo>
+        <mn>2</mn>
+        <mi>𝑘</mi>
+        <mo>+</mo>
+        <mn>1</mn>
+      </math>.</div>
+  </figure>
+  <h2>2 Main Results</h2>
+  <p>Having established the basic definitions, we now present the main theoretical results of this note. We start with a
+    fundamental theorem concerning the sum of even integers, followed by a natural corollary.</p>
+  <figure id="loc-3">
+    <div class="thmbox"
+      style="border-left: 5px solid #565656a2; border-radius: 10px;  background: #adadad2f; padding: 0.8em;">
+      <strong>Theorem</strong> 2.a<span style="white-space: pre-wrap">&#x20;&#x20;&#x20;&#x20;</span>Sum of Two Even
+      Integers<br><br>The sum of any two even integers is even.</div>
+  </figure>
+  <figure>
+    <div class="thmplain"
+      style=" border-left: 5px solid #565656a2; border-radius: 10px; background: #adadad2f; padding: 0.8em;">
+      <strong>Proof</strong> 2.a<span style="white-space: pre-wrap">&#x20;&#x20;&#x20;&#x20;</span>Proof of <a
+        href="#loc-3"><em>Theorem 2.a</em></a><br><br>Let <math>
+        <mi>𝑎</mi>
+      </math> and <math>
+        <mi>𝑏</mi>
+      </math> be two even integers. By <a href="#loc-1"><em>Definition 1.a</em></a>, there exist integers <math>
+        <mi>𝑘</mi>
+      </math> and <math>
+        <mi>𝑚</mi>
+      </math> such that <math>
+        <mi>𝑎</mi>
+        <mo>=</mo>
+        <mn>2</mn>
+        <mi>𝑘</mi>
+      </math> and <math>
+        <mi>𝑏</mi>
+        <mo>=</mo>
+        <mn>2</mn>
+        <mi>𝑚</mi>
+      </math>. Then <math>
+        <mi>𝑎</mi>
+        <mo>+</mo>
+        <mi>𝑏</mi>
+        <mo>=</mo>
+        <mn>2</mn>
+        <mi>𝑘</mi>
+        <mo>+</mo>
+        <mn>2</mn>
+        <mi>𝑚</mi>
+        <mo>=</mo>
+        <mn>2</mn>
+        <mrow>
+          <mo>(</mo>
+          <mrow>
+            <mi>𝑘</mi>
+            <mo>+</mo>
+            <mi>𝑚</mi>
+          </mrow>
+          <mo>)</mo>
+        </mrow>
+      </math>, which shows that <math>
+        <mi>𝑎</mi>
+        <mo>+</mo>
+        <mi>𝑏</mi>
+      </math> is divisible by <math>
+        <mn>2</mn>
+      </math>, hence even by <a href="#loc-1"><em>Definition 1.a</em></a>.</div>
+  </figure>
+  <figure>
+    <div class="thmbox"
+      style="border-left: 5px solid #565656a2; border-radius: 10px;  background: #adadad2f; padding: 0.8em;">
+      <strong>Corollary</strong> 2.a<span style="white-space: pre-wrap">&#x20;&#x20;&#x20;&#x20;</span>Sum of Multiple
+      Even Integers<br><br>The sum of any finite number of even integers is even.</div>
+  </figure>
+  <figure>
+    <div class="thmplain"
+      style=" border-left: 5px solid #565656a2; border-radius: 10px; background: #adadad2f; padding: 0.8em;">
+      <strong>Proof</strong> 2.b<span style="white-space: pre-wrap">&#x20;&#x20;&#x20;</span><br><br>This follows
+      directly from <a href="#loc-3"><em>Theorem 2.a</em></a> by induction on the number of terms.</div>
+  </figure>
+  <h2>3 Additional Examples</h2>
+  <p>To further illustrate the concepts introduced above, we provide a concrete example of even numbers and pose a
+    related problem for the reader to solve.</p>
+  <figure>
+    <div class="thmplain"
+      style=" border-left: 5px solid #565656a2; border-radius: 10px; background: #adadad2f; padding: 0.8em;">
+      <strong>Example</strong> 3.a<span style="white-space: pre-wrap">&#x20;&#x20;&#x20;&#x20;</span>Concrete Even
+      Numbers<br><br>The integers <math>
+        <mn>4</mn>
+      </math>, <math>
+        <mn>10</mn>
+      </math>, and <math>
+        <mn>16</mn>
+      </math> are even since <math>
+        <mn>4</mn>
+        <mo>=</mo>
+        <mn>2</mn>
+        <mo lspace="0.2222222222222222em" rspace="0.2222222222222222em">×</mo>
+        <mn>2</mn>
+      </math>, <math>
+        <mn>10</mn>
+        <mo>=</mo>
+        <mn>2</mn>
+        <mo lspace="0.2222222222222222em" rspace="0.2222222222222222em">×</mo>
+        <mn>5</mn>
+      </math>, and <math>
+        <mn>16</mn>
+        <mo>=</mo>
+        <mn>2</mn>
+        <mo lspace="0.2222222222222222em" rspace="0.2222222222222222em">×</mo>
+        <mn>8</mn>
+      </math>.</div>
+  </figure>
+  <figure id="loc-4">
+    <div class="thmplain"
+      style=" border-left: 5px solid #565656a2; border-radius: 10px; background: #adadad2f; padding: 0.8em;">
+      <strong>Problem</strong> 3.a<span style="white-space: pre-wrap">&#x20;&#x20;&#x20;&#x20;</span>Sum of Two Odd
+      Integers<br><br>Show that the sum of two odd integers is even.</div>
+  </figure>
+  <figure>
+    <div class="thmplain"
+      style=" border-left: 5px solid #565656a2; border-radius: 10px; background: #adadad2f; padding: 0.8em;">
+      <strong>Solution</strong> 3.a<span style="white-space: pre-wrap">&#x20;&#x20;&#x20;&#x20;</span>Solution to <a
+        href="#loc-4"><em>Problem 3.a</em></a><br><br>Let <math>
+        <mi>𝑎</mi>
+      </math> and <math>
+        <mi>𝑏</mi>
+      </math> be odd integers. By <a href="#loc-2"><em>Definition 1.b</em></a>, there exist integers <math>
+        <mi>𝑘</mi>
+      </math> and <math>
+        <mi>𝑚</mi>
+      </math> such that <math>
+        <mi>𝑎</mi>
+        <mo>=</mo>
+        <mn>2</mn>
+        <mi>𝑘</mi>
+        <mo>+</mo>
+        <mn>1</mn>
+      </math> and <math>
+        <mi>𝑏</mi>
+        <mo>=</mo>
+        <mn>2</mn>
+        <mi>𝑚</mi>
+        <mo>+</mo>
+        <mn>1</mn>
+      </math>. Then <math>
+        <mi>𝑎</mi>
+        <mo>+</mo>
+        <mi>𝑏</mi>
+        <mo>=</mo>
+        <mrow>
+          <mo>(</mo>
+          <mrow>
+            <mn>2</mn>
+            <mi>𝑘</mi>
+            <mo>+</mo>
+            <mn>1</mn>
+          </mrow>
+          <mo>)</mo>
+        </mrow>
+        <mo>+</mo>
+        <mrow>
+          <mo>(</mo>
+          <mrow>
+            <mn>2</mn>
+            <mi>𝑚</mi>
+            <mo>+</mo>
+            <mn>1</mn>
+          </mrow>
+          <mo>)</mo>
+        </mrow>
+        <mo>=</mo>
+        <mn>2</mn>
+        <mi>𝑘</mi>
+        <mo>+</mo>
+        <mn>2</mn>
+        <mi>𝑚</mi>
+        <mo>+</mo>
+        <mn>2</mn>
+        <mo>=</mo>
+        <mn>2</mn>
+        <mrow>
+          <mo>(</mo>
+          <mrow>
+            <mi>𝑘</mi>
+            <mo>+</mo>
+            <mi>𝑚</mi>
+            <mo>+</mo>
+            <mn>1</mn>
+          </mrow>
+          <mo>)</mo>
+        </mrow>
+      </math>, which is even by <a href="#loc-1"><em>Definition 1.a</em></a>.</div>
+  </figure>
+</body>
+
+</html>

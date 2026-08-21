@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>麦克斯韦方程组</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hexiongwu1995/my-template@latest/dist/css/math.css">
+    <!-- <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/@hexiongwu1995/my-template@latest/dist/css/counter-heading.css"> -->
+    <script src="https://cdn.jsdelivr.net/npm/@hexiongwu1995/my-template@latest/dist/script/mathjax-config.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@4/startup.js"></script>
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5215219_f9saitsi7rl.css">
+
+    <style>
+        html {
+            --enable-numbering: true;
+        }
+
+        html,
+        body,
+        .container {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow-y: hidden;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        aside {
+            width: 350px;
+            height: 100vh;
+            background-color: rgb(250, 250, 250);
+            padding: 10px 0px;
+            overflow-y: auto;
+        }
+
+        aside,
+        nav,
+        ol,
+        li {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        nav ol {
+            /* counter-reset: item; */
+            list-style: none;
+        }
+
+        /* nav ol li {
+            counter-increment: item;
+        } */
+
+        /* nav ol li::before {
+            content: counters(item, ".") " ";
+        } */
+
+        nav ol li a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        nav {
+            width: 100%;
+            padding-top: 20px;
+        }
+
+        #toc-root li {
+            width: 100%;
+            line-height: 2em;
+            margin-left: 20px;
+        }
+
+        #toc-root li:hover {
+            background-color: #dcdcdc63
+        }
+
+
+        .overlay {
+            display: none;
+        }
+
+        main {
+            width: calc(100vw - 350px);
+            height: 100vh;
+            overflow-y: auto;
+            padding: 0px 20px;
+        }
+
+        article {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0px;
+        }
+        .icon-Numbering{
+            color: #232323;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <aside>
+                <span class="iconfont icon-Numbering"></span>
+            <nav>
+                <ol id="toc-root">
+
+                </ol>
+            </nav>
+        </aside>
+        <div class="overlay"></div>
+        <main>
+            <article>
+                <section>
+                    <h1>麦克斯韦方程组</h1>
+                    <p>麦克斯韦方程组是描述电磁场的方程组，由4个方程组成。 </p>
+                    <h2>磁生电现象</h2>
+                    <h2>磁生电的数学描述</h2>
+                    <h3>积分形式</h3>
+                    <p>数学描述：闭合回路上的电动势等于这个回路上的磁通量随时间的变化速率。</p>
+                    <div class="math">`{:(epsilon, =, - (d Phi_B)/(d t)),( , =, - (d )/(d t)oint vec(B) * d vec(S)):}`
+                    </div>
+                    <h3>微分形式</h3>
+                    <p>数学描述：</p>
+                    <div class="math">`nabla xx vec E = - (del vec B)/(del t)`</div>
+                    <h2>感应电动势的定义</h2>
+                    <p>闭合回路上的感应电动势的物理定义为：电场强度沿闭合回路的线积分。</p>
+                    <div class="math">`epsilon = oint vec E * d vec l`</div>
+
+                </section>
+                <section>
+                    <h1>保守场与非保守场</h1>
+                    <p>在电磁学中，矢量场按照其路径积分的性质可以分为保守场和非保守场两大类。这一分类对于理解静电场和感应电场的本质区别至关重要。</p>
+
+                    <h2>保守场的定义与性质</h2>
+                    <p>保守场是指满足以下条件的矢量场：场沿任意闭合路径的环积分等于零。用数学语言表述，对于矢量场 <span class="math">`vec F`</span>，如果满足：</p>
+                    <div class="math">`oint vec F * d vec l = 0`</div>
+                    <p>则称 <span class="math">`vec F`</span> 为保守场。保守场具有以下重要性质：</p>
+                    <p>首先，保守场的线积分与路径无关，只取决于起点和终点的位置。这意味着对于从点A到点B的任意两条路径 <span class="math">`C_1`</span> 和 <span
+                            class="math">`C_2`</span>，都有：</p>
+                    <div class="math">`int_(C_1) vec F * d vec l = int_(C_2) vec F * d vec l`</div>
+                    <p>其次，保守场可以表示为某个标量势函数的梯度。即存在一个标量函数 <span class="math">`phi`</span>，使得：</p>
+                    <div class="math">`vec F = -grad phi = -nabla phi`</div>
+                    <p>这个性质使得保守场的分析大大简化，因为只需要研究一个标量函数而非矢量函数。</p>
+
+                    <h2>静电场是保守场</h2>
+                    <p>静电场是由静止电荷产生的电场，它是保守场的典型例子。静电场满足以下基本方程：</p>
+                    <div class="math">`oint vec E * d vec l = 0`</div>
+                    <p>这表明在静电场中，电荷沿任意闭合路径移动一周，电场力做功为零。因此，静电场可以引入电势的概念：</p>
+                    <div class="math">`vec E = -nabla V`</div>
+                    <p>其中 <span class="math">`V`</span> 是电势。两点之间的电势差定义为：</p>
+                    <div class="math">`V_B - V_A = -int_A^B vec E * d vec l`</div>
+                    <p>由于静电场是保守场，电荷在静电场中的运动遵循能量守恒定律，这为我们分析电路和电荷运动提供了理论基础。</p>
+
+                    <h2>非保守场的定义与特征</h2>
+                    <p>非保守场是指不满足保守场条件的矢量场，即场沿某些闭合路径的环积分不等于零：</p>
+                    <div class="math">`oint vec F * d vec l != 0`</div>
+                    <p>非保守场的主要特征包括：线积分与路径有关，不能定义全局的势函数，场具有涡旋性质。在电磁学中，非保守场通常与变化的磁场相关。</p>
+
+                    <h2>感应电场是非保守场</h2>
+                    <p>当磁场随时间变化时，会激发感应电场（也称涡旋电场）。这种电场与静电场有本质区别，它是非保守场。根据法拉第电磁感应定律的微分形式：</p>
+                    <div class="math">`nabla xx vec E = -(del vec B)/(del t)`</div>
+                    <p>对等式两边在曲面 <span class="math">`S`</span> 上积分，并应用斯托克斯定理，得到积分形式：</p>
+                    <div class="math">`oint vec E * d vec l = -(del)/(del t) int vec B * d vec S = -(d Phi_B)/(d t)`
+                    </div>
+                    <p>这个结果表明，感应电场沿闭合回路的环积分等于穿过该回路的磁通量变化率的负值。只要磁通量发生变化，环积分就不为零，这正是非保守场的定义。</p>
+
+                    <h2>两类电场的对比</h2>
+                    <p>静电场和感应电场虽然都称为电场，但它们的性质截然不同：</p>
+                    <p>从场的源来看，静电场由电荷激发，满足 <span class="math">`nabla * vec E = rho/epsilon_0`</span>；感应电场由变化磁场激发，满足 <span
+                            class="math">`nabla * vec E = 0`</span>，即感应电场是无源场。</p>
+                    <p>从场的旋度来看，静电场无旋，<span class="math">`nabla xx vec E = 0`</span>；感应电场有旋，<span class="math">`nabla xx
+                            vec E =
+                            -(del vec B)/(del t)`</span>。</p>
+                    <p>从做功性质来看，静电场中电场力做功与路径无关，可以定义电势能；感应电场中电场力做功与路径有关，不能定义全局的电势函数。</p>
+
+                    <h2>总结</h2>
+                    <p>保守场与非保守场的区分是理解电磁场性质的重要工具。静电场作为保守场，可以用标量势描述，满足能量守恒；感应电场作为非保守场，具有涡旋结构，是电磁感应现象的本质原因。麦克斯韦方程组完美地统一了这两类场的描述，揭示了电场与磁场之间的深刻联系。
+                    </p>
+                </section>
+            </article>
+        </main>
+    </div>
+
+    <script>
+
+        // 这段代码的目的是根据artcle中的heading，生成侧边栏目录。
+
+        function generateToc() {
+            const article = document.querySelector('article');
+            const tocRoot = document.getElementById('toc-root');
+            if (!article || !tocRoot) return;
+
+            // 获取所有标题 h1-h6
+            const headings = Array.from(article.querySelectorAll('h1, h2, h3, h4, h5, h6'));
+            if (headings.length === 0) return;
+
+            // 计算每个 heading 的层级数字 (1-6)
+            const getLevel = (el) => parseInt(el.tagName[1], 10);
+
+            // 给每个 heading 生成编号和 id
+            // counters 记录每一层的当前计数，例如 [2, 3] 表示当前在 2.3
+            const counters = [];
+            headings.forEach((heading) => {
+                const level = getLevel(heading);
+
+                // 确保数组有足够的长度
+                while (counters.length < level) {
+                    counters.push(0);
+                }
+                // 截断到当前层级
+                counters.length = level;
+                // 当前层级计数+1（用 level-1 作为索引）
+                counters[level - 1] = counters[level - 1] + 1;
+                
+
+                const id = counters.join('-');
+                heading.id = "heading-" + id;
+
+                // const numbering = counters.join('.');
+
+                // const toggleNumbering = document.getElementById('toggleNumbering');
+                
+                // if (toggleNumbering.checked) {
+                //     heading.textContent = numbering + ' ' + heading.textContent;
+                // }
+            });
+
+            tocRoot.innerHTML = '';
+
+            const stack = [{ level: 1, ol: tocRoot }];
+
+            headings.forEach((heading) => {
+
+                const currentLevel = getLevel(heading);
+
+                // 新建一个li元素，用于承载当前的heading元素
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = '#' + heading.id;
+                a.textContent = heading.textContent;
+                li.appendChild(a);
+
+                // 如果栈顶的heading level 大于 当前的heading level，让栈顶回退到栈顶level等于当前heading level的状态
+                while (stack[stack.length - 1].level > currentLevel) {
+                    stack.pop();
+                }
+
+                if (currentLevel > stack[stack.length - 1].level) {
+                    // 如果当前的heading level 大于栈顶的heading level
+
+                    // 新建一个空的ol元素，挂在栈顶的ol元素的最后一个li元素下
+                    const newOl = document.createElement('ol');
+                    const parentLi = stack[stack.length - 1].ol.lastElementChild;
+                    if (parentLi) {
+                        parentLi.appendChild(newOl);
+                    }
+
+                    // 将当前的heading level 和 新建的ol元素压到栈顶
+                    stack.push({ level: currentLevel, ol: newOl });
+                    // console.log(tocRoot.outerHTML)
+                    // console.log(stack)
+                }
+
+                // 将li元素添加到栈顶的ol元素下
+                stack[stack.length - 1].ol.appendChild(li);
+            });
+
+        };
+        generateToc()
+        // document.getElementById('toggleNumbering').addEventListener('change', toggleNumbering);
+    </script>
+</body>
+
+</html>
