@@ -14,6 +14,7 @@
     <style>
         html {
             --enable-numbering: false;
+            --all-expanded: false;
         }
 
         html,
@@ -56,15 +57,10 @@
             padding-top: 20px;
         }
 
-        /* #toc-root li {
-            text-align: left;
-        } */
-
 
         #toc-root li ol {
             display: none;
             opacity: 0;
-            transition: opacity 0.3s ease, display 0.3s ease allow-discrete;
         }
 
         #toc-root li ol.show {
@@ -167,11 +163,10 @@
     <div class="container">
         <aside>
             <div class="function-panel">
-                <span class="iconfont icon-menu3"></span>
-                <span class="iconfont icon-Files"></span>
-                <span class="iconfont icon-expand-all"></span>
                 <span class="iconfont icon-Numbering"></span>
-
+                <span class="iconfont icon-expand-all"></span>
+                <span class="iconfont icon-Files"></span>
+                <span class="iconfont icon-menu3"></span>
             </div>
 
             <nav>
@@ -254,14 +249,9 @@
     </div>
 
     <script>
-        const nav = document.querySelector('nav');
 
         const article = document.querySelector('article');
         const tocRoot = document.getElementById('toc-root');
-
-        // const toggleNumbering = document.querySelector('.icon-Numbering');
-        // const root = document.documentElement;
-        // const value = getComputedStyle(root).getPropertyValue('--enable-numbering').trim();
 
         // 获取所有标题 h1-h6
         const headings = Array.from(article.querySelectorAll('h1, h2, h3, h4, h5, h6'));
@@ -392,12 +382,7 @@
 
         buildToc();
 
-
-
-
-
-
-
+        const nav = document.querySelector('nav');
         nav.addEventListener('click', (e) => {
             const arrow = e.target.closest('.icon-arrow2');
             if (!arrow) return;
@@ -410,21 +395,13 @@
 
             if (!nestedOl) return;
 
-            if (nestedOl.classList.contains('show')) {
-                nestedOl.classList.remove('show');
-                arrow.classList.remove('rotate-90');
-            } else {
-                nestedOl.classList.add('show');
-                arrow.classList.add('rotate-90');
-            }
-
-
+            nestedOl.classList.toggle('show');
+            arrow.classList.toggle('rotate-90');
         });
 
 
-
-        const toggleNumbering = document.querySelector('.icon-Numbering');
         const root = document.documentElement;
+        const toggleNumbering = document.querySelector('.icon-Numbering');
 
         toggleNumbering.addEventListener('click', () => {
             const currentValue = getComputedStyle(root).getPropertyValue('--enable-numbering').trim();
@@ -434,13 +411,22 @@
             updateTocText();
         });
 
-        // const iconExpand = document.querySelector('.icon-expand-all');
-        // const ol = tocRoot.querySelectorAll('ol');
-        // iconExpand.addEventListener('click', () => {
-        //     ol.forEach((item) => {
-        //         item.style.display = item.style.display === 'block' ? 'none' : 'block';
-        //     })
-        // })
+
+        const iconExpand = document.querySelector('.icon-expand-all');
+        const ol = tocRoot.querySelectorAll('ol');
+        iconExpand.addEventListener('click', () => {
+            const allExpandedValue = getComputedStyle(root).getPropertyValue('--all-expanded').trim();
+            const newAllExpanded = allExpandedValue === 'false' ? 'true' : 'false';
+            root.style.setProperty('--all-expanded', newAllExpanded);
+            ol.forEach((item) => {
+                item.classList.toggle('show', newAllExpanded === 'true');
+            })
+
+            const arrows = tocRoot.querySelectorAll('.icon-arrow2');
+            arrows.forEach((arrow) => {
+                arrow.classList.toggle('rotate-90', newAllExpanded === 'true');
+            });
+        })
 
 
     </script>
