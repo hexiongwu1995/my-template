@@ -9,23 +9,13 @@
     <!-- <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/@hexiongwu1995/my-template@latest/dist/css/counter-heading.css"> -->
     <script src="https://cdn.jsdelivr.net/npm/@hexiongwu1995/my-template@latest/dist/script/mathjax-config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@4/startup.js"></script>
-    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5215219_5elh4olxrdk.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5215219_7kwynldxsy6.css">
 
     <style>
         html {
             --enable-numbering: false;
             --all-expanded: false;
             --aside-width: 350px;
-        }
-
-        /* @media screen and (max-width: 800px) {
-            html {
-                --aside-width: 0px;
-            }
-        } */
-
-        body {
-            overflow-y: hidden;
         }
 
         html,
@@ -41,11 +31,6 @@
             display: flex;
         }
 
-        /* .container-hidden {
-            transform: translateX(-350px);
-            transition: all 0.3s ease-in-out;
-        } */
-
         aside {
             width: var(--aside-width);
             height: 100vh;
@@ -53,20 +38,6 @@
             padding: 10px 0px;
             overflow: hidden;
             transition: all 0.5s ease-in-out;
-        }
-
-        @media screen and (max-width: 800px) {
-            aside {
-                position: absolute;
-                z-index: 100;
-                left: 0;
-                top: 0;
-                transform: translateX(-350px);
-            }
-
-            aside.show {
-                transform: translateX(0px);
-            }
         }
 
         aside,
@@ -148,17 +119,6 @@
 
         .overlay {
             display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.3);
-            z-index: 99;
-        }
-
-        .overlay.show {
-            display: block;
         }
 
         main {
@@ -169,11 +129,7 @@
             position: relative;
         }
 
-        @media screen and (max-width: 800px) {
-            main {
-                width: 100%;
-            }
-        }
+
 
         article {
             width: 100%;
@@ -206,48 +162,9 @@
             gap: 20px;
         }
 
-        .icon-Aside,
-        .icon-aside_create {
-            box-sizing: border-box;
-            padding: 10px;
-            background-color: #cfcfcf29;
-            color: #080808eb;
-            font-size: 26px;
-            border-radius: 20px;
-            cursor: pointer;
-        }
 
-        .icon-Aside {
-            position: absolute;
-            top: 20px;
-            left: 10px;
-        }
 
-        .icon-Aside:hover,
-        .icon-aside_create:hover {
-            background-color: #a4a4a49f;
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
 
-        .icon-aside_create {
-            display: none;
-        }
-
-        @media screen and (max-width: 800px) {
-            .icon-Aside {
-                display: none;
-            }
-
-            .icon-aside_create {
-                display: block;
-                position: fixed;
-                bottom: 180px;
-                right: 40px;
-                z-index: 101;
-            }
-        }
 
         .icon-expand-all,
         .icon-Numbering,
@@ -287,6 +204,94 @@
             background-color: rgba(215, 215, 215, 0.845);
             margin: 10px 0px 20px 0px;
         }
+
+        .icon-Aside,
+        .icon-menu3 {
+            box-sizing: border-box;
+            padding: 10px;
+            background-color: #cfcfcf29;
+            color: #080808eb;
+            font-size: 26px;
+            border-radius: 20px;
+        }
+
+        .icon-Aside:hover,
+        .icon-menu3:hover {
+            background-color: #a4a4a49f;
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .icon-Aside {
+            position: fixed;
+            top: 10px;
+            left: 230px;
+            z-index: 102;
+        }
+
+        .icon-menu3 {
+            position: fixed;
+            top: 10px;
+            left: 230px;
+            z-index: 102;
+            display: none;
+        }
+
+
+        @media screen and (max-width: 800px) {
+            .container {
+                position: relative;
+            }
+
+            aside {
+                position: absolute;
+                z-index: 20;
+                left: 0;
+                top: 0;
+                transform: translateX(- var(--aside-width));
+            }
+
+            aside.show {
+                transform: translateX(0px);
+            }
+
+            main {
+                width: 100%;
+            }
+
+            .overlay {
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: rgba(72, 72, 72, 0.219);
+                z-index: 10;
+            }
+
+            .overlay.show {
+                display: block;
+            }
+
+            .icon-Aside {
+                display: none;
+            }
+
+            .icon-menu3 {
+                display: block;
+                position: fixed;
+                top: 10px;
+                left: 10px;
+                z-index: 102;
+            }
+
+            .icon-menu3.show {
+                transform: translateX(200px);
+            }
+
+        }
     </style>
 </head>
 
@@ -295,6 +300,10 @@
     <div class="container">
         <aside>
             <span class="template-name">typst</span>
+
+            <span class="iconfont icon-Aside"></span>
+            <span class="iconfont icon-menu3"></span>
+
             <div class="divider"></div>
             <span class="toc-title">目录</span>
             <nav>
@@ -308,14 +317,11 @@
                 <span class="iconfont icon-print">打印</span>
             </div>
         </aside>
+
         <div class="overlay"></div>
+
         <main>
-            <span class="iconfont icon-Aside"></span>
-            <span class="iconfont icon-aside_create"></span>
-
-
             <article>
-
                 <section>
                     <h1>麦克斯韦方程组</h1>
                     <p>麦克斯韦方程组是描述电磁场的方程组，由4个方程组成。 </p>
@@ -568,24 +574,23 @@
         })
 
         const iconAside = document.querySelector('.icon-Aside');
-        iconAside.addEventListener('click', toggleAside);
-
-        function toggleAside() {
-            const asideWidth = getComputedStyle(root).getPropertyValue('--aside-width').trim();
-            const newWidth = asideWidth === '350px' ? '0px' : '350px';
-            root.style.setProperty('--aside-width', newWidth);
-        }
-
-        const iconAsideCreate = document.querySelector('.icon-aside_create');
-        const overlay = document.querySelector('.overlay');
         const aside = document.querySelector('aside');
+        iconAside.addEventListener('click', () => {
+            iconAside.classList.toggle('show');
+            aside.classList.toggle('show');
+        });
 
-        iconAsideCreate.addEventListener('click', () => {
+        const iconMenu3 = document.querySelector('.icon-menu3');
+        const overlay = document.querySelector('.overlay');
+
+        iconMenu3.addEventListener('click', () => {
+            iconMenu3.classList.toggle('show');
             aside.classList.toggle('show');
             overlay.classList.toggle('show');
         });
 
         overlay.addEventListener('click', () => {
+            iconMenu3.classList.remove('show');
             aside.classList.remove('show');
             overlay.classList.remove('show');
         });
