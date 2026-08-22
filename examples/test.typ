@@ -1,8 +1,8 @@
 #import "@preview/theoframe:0.3.6":*
-#show: theoframe-setup
-// #show: theoframe-setup.with(theme: (style: "minimal", color: rgb("#067300")))
+// #show: theoframe-setup
+#show: theoframe-setup.with(theme: (style: "box", color: rgb("#067300")))
 
-#set page(paper:"a4",  margin: 1cm)
+#set page(paper:"a4",  margin: 2cm)
 
 = Preliminaries
 
