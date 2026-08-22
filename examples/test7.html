@@ -15,8 +15,12 @@
         html {
             --enable-numbering: false;
             --all-expanded: false;
+            --aside-width: 350px;
         }
 
+        body {
+            overflow-y: hidden;
+        }
         html,
         body,
         .container {
@@ -24,21 +28,27 @@
             height: 100vh;
             margin: 0;
             padding: 0;
-            overflow-y: hidden;
+            /* overflow-y: hidden; */
         }
 
         .container {
             display: flex;
         }
+        .container-hidden {
+            transform: translateX(-350px);
+            transition: all 0.3s ease-in-out;
+        }
 
         aside {
-            width: 350px;
+            width: var(--aside-width);
             height: 100vh;
-            background-color: rgba(235, 235, 235, 0.352);
+            background-color: rgb(231, 227, 227);
             padding: 10px 0px;
-            overflow-y: auto;
+            overflow:hidden;
             position: relative;
+            transition: all 0.3s ease-in-out;
         }
+
 
         aside,
         nav,
@@ -65,6 +75,7 @@
             margin-top: 10px;
             padding: 10px;
         }
+
         #toc-root li ol {
             display: none;
             opacity: 0;
@@ -121,10 +132,11 @@
         }
 
         main {
-            width: calc(100vw - 350px);
+            width: calc(100vw - var(--aside-width));
             height: 100vh;
             overflow-y: auto;
             padding: 0px 80px;
+            position: relative;
         }
 
         article {
@@ -149,6 +161,7 @@
             margin-top: 20px;
             padding: 10px;
         }
+
         .function-panel {
             display: flex;
             flex-direction: column;
@@ -157,15 +170,24 @@
             gap: 20px;
         }
 
-
-        .icon-show-aside,
-        .icon-hide-aside {
+        .icon-Aside {
             box-sizing: border-box;
             padding: 10px;
-            background-color: #cfcfcf21;
+            background-color: #cfcfcf29;
             color: #080808eb;
-            font-size: 16px;
+            font-size: 26px;
             border-radius: 20%;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            left:10px;
+            /* display:none; */
+        }
+
+        .icon-Aside:hover {
+            background-color: #a4a4a49f;
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
             cursor: pointer;
         }
 
@@ -189,8 +211,7 @@
         .icon-expand-all:hover,
         .icon-Numbering:hover,
         .icon-print:hover,
-        .icon-show-aside:hover,
-        .icon-hide-aside:hover {
+        .icon-show-aside:hover {
             background-color: #a4a4a49f;
             transform: translateY(-5px);
             transition: all 0.3s ease;
@@ -202,10 +223,11 @@
             transition: all 0.3s ease-in-out;
         }
 
-        span.show-aside {
-            position: absolute;
-            top: 20px;
-            right: -50px;
+        .divider {
+            width: 100%;
+            height: 2px;
+            background-color: rgba(215, 215, 215, 0.845);
+            margin: 10px 0px 20px 0px;
         }
     </style>
 </head>
@@ -214,11 +236,12 @@
     <div class="container">
         <aside>
             <span class="template-name">typst</span>
-            <span class="show-aside">
-                <span class="iconfont icon-show-aside"></span>
-                <span class="iconfont icon-hide-aside"></span>
-            </span>
 
+            <!-- <span class="hide-aside">
+                <span class="iconfont icon-hide-aside"></span>
+            </span> -->
+
+            <div class="divider"></div>
             <span class="toc-title">目录</span>
             <nav>
                 <ol id="toc-root"></ol>
@@ -233,7 +256,9 @@
         </aside>
         <div class="overlay"></div>
         <main>
+
             <article>
+                <span class="iconfont icon-Aside"></span>
                 <section>
                     <h1>麦克斯韦方程组</h1>
                     <p>麦克斯韦方程组是描述电磁场的方程组，由4个方程组成。 </p>
@@ -485,6 +510,11 @@
             });
         })
 
+        const iconAside = document.querySelector('.icon-Aside');
+        iconAside.addEventListener('click', () => {
+            const asideWidth = root.style.getPropertyValue('--aside-width');
+            root.style.setProperty('--aside-width', asideWidth === '350px' ? '0px' : '350px');
+        })
 
     </script>
 </body>
