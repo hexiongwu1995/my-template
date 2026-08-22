@@ -9,7 +9,7 @@
     <!-- <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/@hexiongwu1995/my-template@latest/dist/css/counter-heading.css"> -->
     <script src="https://cdn.jsdelivr.net/npm/@hexiongwu1995/my-template@latest/dist/script/mathjax-config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mathjax@4/startup.js"></script>
-    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5215219_3kq885m56e7.css">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_5215219_5elh4olxrdk.css">
 
     <style>
         html {
@@ -34,9 +34,10 @@
         aside {
             width: 350px;
             height: 100vh;
-            background-color: rgb(250, 250, 250);
+            background-color: rgba(235, 235, 235, 0.352);
             padding: 10px 0px;
             overflow-y: auto;
+            position: relative;
         }
 
         aside,
@@ -54,10 +55,16 @@
 
         nav {
             width: 100%;
-            padding-top: 20px;
         }
 
-
+        span.toc-title {
+            display: block;
+            font-size: 10px;
+            font-weight: bold;
+            color: rgba(123, 123, 123, 0.495);
+            margin-top: 10px;
+            padding: 10px;
+        }
         #toc-root li ol {
             display: none;
             opacity: 0;
@@ -117,7 +124,7 @@
             width: calc(100vw - 350px);
             height: 100vh;
             overflow-y: auto;
-            padding: 0px 20px;
+            padding: 0px 80px;
         }
 
         article {
@@ -127,29 +134,65 @@
             padding: 0px;
         }
 
+        .template-name {
+            font-size: 40px;
+            font-weight: bold;
+            color: rgba(123, 123, 123, 0.495);
+            margin-top: 60px;
+            padding: 40px;
+        }
+
+        /* .function-panel {
+            position: absolute;
+            top: 0px;
+            left: 100px;
+        } */
+
+        .function-title {
+            display: block;
+            font-size: 10px;
+            font-weight: bold;
+            color: rgba(123, 123, 123, 0.495);
+            margin-top: 20px;
+            padding: 10px;
+        }
         .function-panel {
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
-            align-items: center;
-            margin: 40px 20px;
+            align-items: flex-start;
+            gap: 20px;
         }
 
-        .icon-menu3,
-        .icon-Files,
+
         .icon-expand-all,
-        .icon-Numbering {
+        .icon-Numbering,
+        .icon-print,
+        .icon-show-aside,
+        .icon-hide-aside {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px 10px 10px 20px;
+            background-color: #cfcfcf3e;
             color: #080808eb;
-            font-size: 25px;
-            padding: 15px;
-            border-radius: 30%;
+            font-size: 16px;
+            /* border-radius: 20px; */
+            cursor: pointer;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
         }
 
-        .icon-menu3:hover,
-        .icon-Files:hover,
         .icon-expand-all:hover,
-        .icon-Numbering:hover {
-            background-color: #dcdcdc63;
-            text-decoration: underline;
+        .icon-Numbering:hover,
+        .icon-print:hover,
+        .icon-show-aside:hover,
+        .icon-hide-aside:hover {
+            background-color: #a4a4a49f;
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .rotate-90 {
@@ -162,17 +205,23 @@
 <body>
     <div class="container">
         <aside>
-            <div class="function-panel">
-                <span class="iconfont icon-Numbering"></span>
-                <span class="iconfont icon-expand-all"></span>
-                <span class="iconfont icon-Files"></span>
-                <span class="iconfont icon-menu3"></span>
-            </div>
+            <span class="template-name">typst</span>
+            <span class="show-aside">
+                <span class="iconfont icon-show-aside"></span>
+                <span class="iconfont icon-hide-aside"></span>
+            </span>
 
+            <span class="toc-title">目录</span>
             <nav>
-                <ol id="toc-root">
-                </ol>
+                <ol id="toc-root"></ol>
             </nav>
+
+            <span class="function-title">功能模块</span>
+            <div class="function-panel">
+                <span class="iconfont icon-Numbering">标题编号</span>
+                <span class="iconfont icon-expand-all">展开目录</span>
+                <span class="iconfont icon-print">打印</span>
+            </div>
         </aside>
         <div class="overlay"></div>
         <main>
