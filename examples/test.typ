@@ -1,8 +1,23 @@
+
+
+
+
+
 #import "@preview/theoframe:0.3.6":*
 // #show: theoframe-setup
 #show: theoframe-setup.with(theme: (style: "box", color: rgb("#067300")))
 
 #set page(paper:"a4",  margin: 2cm)
+#html.title("test")
+#html.link(rel:"stylesheet", href:"https://cdn.jsdelivr.net/npm/@hexiongwu1995/my-template@latest/dist/iconfont/iconfont.css" )
+#html.link(rel:"stylesheet", href:"https://cdn.jsdelivr.net/npm/@hexiongwu1995/my-template@latest/dist/css/style.css" )
+#html.link(rel:"stylesheet", href:"https://cdn.jsdelivr.net/npm/@hexiongwu1995/my-template@latest/dist/css/math.css" )
+#html.script(src:"https://cdn.jsdelivr.net/npm/@hexiongwu1995/my-template@latest/dist/script/mathjax-config.js")
+#html.script(src:"https://cdn.jsdelivr.net/npm/mathjax@4/startup.js")
+
+
+
+
 
 = Preliminaries
 
@@ -55,3 +70,5 @@ To further illustrate the concepts introduced above, we provide a concrete examp
   $a + b = (2k + 1) + (2m + 1) = 2k + 2m + 2 = 2(k + m + 1)$,
   which is even by @def:even.
 ]<sol:sum-odd>
+
+#html.script(src:"https://cdn.jsdelivr.net/npm/@hexiongwu1995/my-template@latest/dist/script/script.js")

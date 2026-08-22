@@ -284,11 +284,6 @@
     <div class="container">
         <aside>
             <span class="template-name">typst</span>
-
-            <!-- <span class="hide-aside">
-                <span class="iconfont icon-hide-aside"></span>
-            </span> -->
-
             <div class="divider"></div>
             <span class="toc-title">目录</span>
             <nav>
@@ -564,9 +559,6 @@
         const iconAside = document.querySelector('.icon-Aside');
         iconAside.addEventListener('click', toggleAside);
 
-        const iconAsideCreate = document.querySelector('.icon-aside_create');
-        const overlay = document.querySelector('.overlay');
-
         function toggleAside() {
             const asideWidth = getComputedStyle(root).getPropertyValue('--aside-width').trim();
             const newWidth = asideWidth === '350px' ? '0px' : '350px';
@@ -576,6 +568,9 @@
                 overlay.classList.toggle('show', newWidth === '350px');
             }
         }
+
+        const iconAsideCreate = document.querySelector('.icon-aside_create');
+        const overlay = document.querySelector('.overlay');
 
         iconAsideCreate.addEventListener('click', toggleAside);
 
