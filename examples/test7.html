@@ -58,6 +58,9 @@
         @media screen and (max-width: 800px) {
             aside {
                 position: absolute;
+                z-index: 100;
+                left: 0;
+                top: 0;
             }
         }
 
@@ -138,9 +141,20 @@
             background-color: #dcdcdc63
         }
 
-        /* .overlay {
+        .overlay {
             display: none;
-        } */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 99;
+        }
+
+        .overlay.show {
+            display: block;
+        }
 
         main {
             width: calc(100vw - var(--aside-width));
@@ -220,6 +234,7 @@
                 position: fixed;
                 bottom: 180px;
                 right: 40px;
+                z-index: 101;
             }
         }
 
@@ -287,7 +302,7 @@
                 <span class="iconfont icon-print">打印</span>
             </div>
         </aside>
-        <!-- <div class="overlay"></div> -->
+        <div class="overlay"></div>
         <main>
             <span class="iconfont icon-Aside"></span>
             <span class="iconfont icon-aside_create"></span>
@@ -547,16 +562,27 @@
         })
 
         const iconAside = document.querySelector('.icon-Aside');
-        iconAside.addEventListener('click', () => {
-            const asideWidth = getComputedStyle(root).getPropertyValue('--aside-width');
-            root.style.setProperty('--aside-width', asideWidth === '350px' ? '0px' : '350px');
-        })
+        iconAside.addEventListener('click', toggleAside);
 
         const iconAsideCreate = document.querySelector('.icon-aside_create');
-        iconAsideCreate.addEventListener('click', () => {
-            const asideWidth = getComputedStyle(root).getPropertyValue('--aside-width');
-            root.style.setProperty('--aside-width', asideWidth === '350px' ? '0px' : '350px');
-        })
+        const overlay = document.querySelector('.overlay');
+
+        function toggleAside() {
+            const asideWidth = getComputedStyle(root).getPropertyValue('--aside-width').trim();
+            const newWidth = asideWidth === '350px' ? '0px' : '350px';
+            root.style.setProperty('--aside-width', newWidth);
+
+            if (window.innerWidth <= 800) {
+                overlay.classList.toggle('show', newWidth === '350px');
+            }
+        }
+
+        iconAsideCreate.addEventListener('click', toggleAside);
+
+        overlay.addEventListener('click', () => {
+            root.style.setProperty('--aside-width', '0px');
+            overlay.classList.remove('show');
+        });
     </script>
 </body>
 
