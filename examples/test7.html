@@ -18,9 +18,16 @@
             --aside-width: 350px;
         }
 
+        @media screen and (max-width: 800px) {
+            html {
+                --aside-width: 0px;
+            }
+        }
+
         body {
             overflow-y: hidden;
         }
+
         html,
         body,
         .container {
@@ -28,27 +35,31 @@
             height: 100vh;
             margin: 0;
             padding: 0;
-            /* overflow-y: hidden; */
         }
 
         .container {
             display: flex;
         }
-        .container-hidden {
+
+        /* .container-hidden {
             transform: translateX(-350px);
             transition: all 0.3s ease-in-out;
-        }
+        } */
 
         aside {
             width: var(--aside-width);
             height: 100vh;
-            background-color: rgb(231, 227, 227);
+            background-color: rgb(210, 210, 210);
             padding: 10px 0px;
-            overflow:hidden;
-            position: relative;
-            transition: all 0.3s ease-in-out;
+            overflow: hidden;
+            transition: all 0.5s ease-in-out;
         }
 
+        @media screen and (max-width: 800px) {
+            aside {
+                position: absolute;
+            }
+        }
 
         aside,
         nav,
@@ -127,9 +138,9 @@
             background-color: #dcdcdc63
         }
 
-        .overlay {
+        /* .overlay {
             display: none;
-        }
+        } */
 
         main {
             width: calc(100vw - var(--aside-width));
@@ -170,25 +181,46 @@
             gap: 20px;
         }
 
-        .icon-Aside {
+        .icon-Aside,
+        .icon-aside_create {
             box-sizing: border-box;
             padding: 10px;
             background-color: #cfcfcf29;
             color: #080808eb;
             font-size: 26px;
-            border-radius: 20%;
+            border-radius: 20px;
             cursor: pointer;
-            position: absolute;
-            top: 20px;
-            left:10px;
-            /* display:none; */
         }
 
-        .icon-Aside:hover {
+        .icon-Aside {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+        }
+
+        .icon-Aside:hover,
+        .icon-aside_create:hover {
             background-color: #a4a4a49f;
             transform: translateY(-5px);
             transition: all 0.3s ease;
             cursor: pointer;
+        }
+
+        .icon-aside_create {
+            display: none;
+        }
+
+        @media screen and (max-width: 800px) {
+            .icon-Aside {
+                display: none;
+            }
+
+            .icon-aside_create {
+                display: block;
+                position: fixed;
+                bottom: 180px;
+                right: 40px;
+            }
         }
 
         .icon-expand-all,
@@ -233,6 +265,7 @@
 </head>
 
 <body>
+
     <div class="container">
         <aside>
             <span class="template-name">typst</span>
@@ -254,11 +287,14 @@
                 <span class="iconfont icon-print">打印</span>
             </div>
         </aside>
-        <div class="overlay"></div>
+        <!-- <div class="overlay"></div> -->
         <main>
+            <span class="iconfont icon-Aside"></span>
+            <span class="iconfont icon-aside_create"></span>
+
 
             <article>
-                <span class="iconfont icon-Aside"></span>
+
                 <section>
                     <h1>麦克斯韦方程组</h1>
                     <p>麦克斯韦方程组是描述电磁场的方程组，由4个方程组成。 </p>
@@ -512,10 +548,15 @@
 
         const iconAside = document.querySelector('.icon-Aside');
         iconAside.addEventListener('click', () => {
-            const asideWidth = root.style.getPropertyValue('--aside-width');
+            const asideWidth = getComputedStyle(root).getPropertyValue('--aside-width');
             root.style.setProperty('--aside-width', asideWidth === '350px' ? '0px' : '350px');
         })
 
+        const iconAsideCreate = document.querySelector('.icon-aside_create');
+        iconAsideCreate.addEventListener('click', () => {
+            const asideWidth = getComputedStyle(root).getPropertyValue('--aside-width');
+            root.style.setProperty('--aside-width', asideWidth === '350px' ? '0px' : '350px');
+        })
     </script>
 </body>
 
